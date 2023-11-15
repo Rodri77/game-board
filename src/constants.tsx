@@ -28,6 +28,15 @@ export const leaderBoardColumns: ColumnsType<Player> = [
   },
 ];
 
+export const regionItems = [
+  { key: "eu", label: "Eu" },
+  { key: "na", label: "Na" },
+  { key: "ap", label: "Ap" },
+  { key: "kr", label: "Kr" },
+  { key: "latam", label: "Latam" },
+  { key: "br", label: "Br" },
+];
+
 export const matchHistoryColumns: ColumnsType<MappedMatchData> = [
   {
     title: "Map",

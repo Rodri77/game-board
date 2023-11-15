@@ -29,7 +29,6 @@ export const gameApi = createApi({
               player => player.name === decodeURI(arg.name)
             )[0];
             const teamName = playerData.team.toLocaleLowerCase();
-            console.log({ match, teamName, playerData });
             const hasWon =
               match.teams[teamName]?.has_won ??
               teamName === match.rounds[0].winning_team;
