@@ -11,3 +11,11 @@ export function Loading() {
     </div>
   );
 }
+
+export function ScrollLoading() {
+  return (
+    <div className="scroll-loader">
+      <Spin size="large" />
+    </div>
+  );
+}

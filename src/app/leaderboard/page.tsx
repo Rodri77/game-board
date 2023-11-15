@@ -7,7 +7,7 @@ import Link from "next/link";
 
 import { leaderBoardColumns, regionItems } from "@/constants";
 import { gameApi } from "../api";
-import { Loading } from "../components/Loading";
+import { Loading, ScrollLoading } from "../components/Loading";
 import type { LeaderboardData, Player } from "../types/leaderboard";
 import "./style.css";
 
@@ -62,18 +62,7 @@ export default function LeaderBoard() {
         dataLength={boardData?.players.length ?? 0}
         next={fetchNext}
         hasMore={boardData?.total_players !== boardData?.players.length}
-        loader={
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "100px",
-            }}
-          >
-            <Spin size="large" />
-          </div>
-        }
+        loader={<ScrollLoading />}
       >
         <Table
           dataSource={boardData?.players}

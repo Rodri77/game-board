@@ -4,6 +4,7 @@ import { MappedMatchData } from "./app/types/matchHistory";
 import { Image } from "antd";
 
 export const BASE_URL = "https://api.henrikdev.xyz";
+export const POSTS_BASE_URL = "https://6396aee2a68e43e41808fa18.mockapi.io/api";
 
 export const leaderBoardColumns: ColumnsType<Player> = [
   {
@@ -59,7 +60,7 @@ export const matchHistoryColumns: ColumnsType<MappedMatchData> = [
           justifyContent: "center",
         }}
       >
-        <p style={{ color: `${value ? "green" : "red"}`, fontWeight: "700" }}>
+        <p style={{ color: "white", fontWeight: "700" }}>
           {value ? "Victory" : "Defeat"}
         </p>
       </div>

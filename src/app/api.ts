@@ -1,12 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { BASE_URL } from "@/constants";
+import { BASE_URL, POSTS_BASE_URL } from "@/constants";
 import type { LeaderboardData } from "./types/leaderboard";
 import type {
   MappedMatchData,
   MatchQuery,
   MatchResponse,
 } from "./types/matchHistory";
+import type { PostData } from "./types/posts";
 
 export const gameApi = createApi({
   reducerPath: "gameApi",
@@ -51,7 +52,29 @@ export const gameApi = createApi({
   }),
 });
 
+export const postsApi = createApi({
+  reducerPath: "postsApi",
+  baseQuery: fetchBaseQuery({ baseUrl: POSTS_BASE_URL }),
+  endpoints: builder => ({
+    getPosts: builder.query<PostData[], string>({
+      query: page => `/posts?page=${page}&limit=5`,
+    }),
+    getPostsBySearchValue: builder.query<PostData[], string>({
+      query: search => `posts?authorName=${search}&postContent=${search}`,
+    }),
+    getPostById: builder.query<PostData, string>({
+      query: id => `posts/${id}`,
+    }),
+  }),
+});
+
 export const {
   useGetLeaderboardByRegionQuery,
   useGetUserMatchesByRegionAndNameQuery,
 } = gameApi;
+
+export const {
+  useGetPostsQuery,
+  useGetPostByIdQuery,
+  useGetPostsBySearchValueQuery,
+} = postsApi;
